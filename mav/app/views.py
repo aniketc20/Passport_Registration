@@ -36,7 +36,7 @@ def login_view(request):
         form = AccountAuthenticationForm()
         context['login_form'] = form
 
-    return render(request, "login.html", context)
+    return render(request, "login.html", context)  # renders login.html page when request is GET
 
 
 # logout view

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <title>Animated Login Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_dash.css' %}">
+    {% include 'snippets/header.html' %}
+</head>
+<body>
+<style type="text/css">
+
+body {
+  background-image: url("{% static 'img/background.jpg' %}");
+  background-size: auto 100%;
+  }
+
+</style>
+<div class="main">
+    {% block content %}
+
+    {% endblock content %}
+</div>
+
+{% include 'snippets/footer.html' %}
+</body>
+
+</html>

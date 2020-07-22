@@ -1,24 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'base_dash.html' %}
 
 {% load static %}
 
 {% block content %}
-<style type="text/css">
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
-}
-
-</style>
 {% if request.user.is_authenticated %}
 <h1>Dashboard</h1>
-<img src="{{request.user.image.url}}" class="center">
-    <h3 id="h3" align="center"></h3>
-<button id="btnDisplay" >Display Info</button>
-<a id="refresh" href="javascript:location.reload(true)">Refresh Page</a>
+    <h4 id="h3" class=""></h4>
+      <button id="btnDisplay" class="button_center">Display Info</button>
+<a href="javascript:location.reload(true)" ><button class="button_center">Refresh Page</button></a>
 {% else %}
 Registration Done
 <br>
@@ -28,7 +18,7 @@ Click <a class="p-2 text-dark" href="{% url 'login' %}">Here</a> to login
 document.querySelector("#btnDisplay").addEventListener('click', function() {
     document.getElementById("h3").innerHTML="Full Name: " + "{{user.full_name}}"+ "<br>"+
     "Passport no: " + {{user.passport_number}} + "<br>" +
-    "Phone number: " + {{user.phone_number}}+ "<br>"+
+    "Phone number: " + {{user.phone_number}} + "<br>"+
     "Email: " + "{{user.email}}"+ "<br>"+
     "Date of Birth: " + "{{user.d_o_b}}";
 });
