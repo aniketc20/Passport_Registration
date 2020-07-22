@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style type="text/css">
+
+    .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+</style>
+
+<form class="form-signin" method="post" enctype="multipart/form-data">
+
+  {% csrf_token %}
+
+  <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+  <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+
+  <input type="text" name="full_name" id="inputName" class="form-control" placeholder="Name" required autofocus>
+
+  <input type="tel" name="phone_number" id="input_phone_number" class="form-control" placeholder="Phone" required autofocus>
+
+  <input type="date" name="d_o_b" id="input_d_o_b" class="form-control" placeholder="d_o_b" required autofocus>
+
+  <input type="number" name="passport_number" id="input_passport_number" class="form-control" placeholder="passport_number" required autofocus>
+  <div class="form-group">
+					<label for="id_image">Image</label>
+					<input  type="file" name="image" id="id_image" accept="image/*" required>
+				</div>
+  <input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="Password" required>
+
+  <input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="Confirm Password" required>
+
+    {% for field in registration_form %}
+      <p>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+  {% endfor %}
+    {% if registration_form.non_field_errors %}
+    <div style="color: red">
+      <p>{{ registration_form.non_field_errors }}</p>
+    </div>
+
+  {% endif %}
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+
+</form>
+
+{% endblock content %}
